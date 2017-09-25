@@ -8,16 +8,18 @@ class PlantToxicity::CLI
     exit
   end
 
-  # list to be fixed - loop incorrect
   def list_plants_by_letter
+    # change puts/loop order to be similar to get_plant_details in list?
+    # clean up interface to indicate that letter or "exit" is an option
     input = nil
     until input == "exit"
-      puts "Enter a letter from A to Z."
+      puts "To see a list of plants, enter a letter from A to Z. Enter 'exit' to end the session."
       input = gets.strip.downcase
       if input.match(/\b[a-z]\b/)
-        # use Scraper class to get new list?
         list = PlantToxicity::List.new(input.upcase)
         list.list_plants
+      elsif input == "exit"
+        break
       else
         puts "Sorry, that is not a valid option."
       end
