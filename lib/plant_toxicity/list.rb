@@ -1,14 +1,18 @@
 class PlantToxicity::List
 
-  attr_accessor :letter, :plants
+  attr_accessor :letter, :plants, :scraper
+
+  #SCRAPER_OBJECT = PlantToxicity::Scraper.new
 
   def initialize(letter)
     @letter = letter.upcase
     # use scraper method to get plants details (with @letter as argument, used to find selector/url)
-    @plants = []
-    [1,2,3].each do |i|
-      @plants << PlantToxicity::Plant.new("plant #{i}", "url #{i}")
-    end
+    #@plants = SCRAPER_OBJECT.get_list(@letter)
+    @scraper = PlantToxicity::Scraper.new
+    @plants = @scraper.get_list(@letter)
+    #[1,2,3].each do |i|
+      #@plants << PlantToxicity::Plant.new("plant #{i}", "url #{i}")
+    #end
   end
 
   def list_plants
@@ -17,12 +21,14 @@ class PlantToxicity::List
     @plants.each.with_index(1) do |plant, i|
       puts "#{i}. #{plant.name}"
     end
+    puts "Would you like to see more details about a plant in this list? (Y/N)"
     input = nil
     until input == "n"
-      puts "Would you like to see more details about a plant in this list? (Y/N)"
+      # puts "Would you like to see more details about a plant in this list? (Y/N)"
       input = gets.strip.downcase
       if input == "y"
-        get_plant_details
+        plant_details
+        puts "Would you like more information about another plant in this list? (Y/N)"
       elsif input == "n"
         break
       else
@@ -31,7 +37,7 @@ class PlantToxicity::List
     end
   end
 
-  def get_plant_details
+  def plant_details
     puts "Please enter the plant's number. (1-#{@plants.length})"
     input = gets.strip.to_i
     until input >= 1 && input <= @plants.length
@@ -43,6 +49,7 @@ class PlantToxicity::List
       #end
     end
     plant = @plants[input-1]
+    @scraper.get_plant_details(plant)
     plant.show_details
   end
 

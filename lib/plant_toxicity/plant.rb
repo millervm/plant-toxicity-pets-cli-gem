@@ -8,7 +8,13 @@ class PlantToxicity::Plant
   end
 
   def show_details
-    puts "#{@name} - #{@url}"
+    puts "#{@name}"
+    puts "#{@url}"
+    puts "#{@scientific_name}"
+    puts "#{@other_names}"
+    puts "#{@toxicity}"
+    puts "#{@non_toxicity}"
+    puts "#{@clinical_symptoms}"
     # use scraper class method to get additional information about each plant
   end
 
