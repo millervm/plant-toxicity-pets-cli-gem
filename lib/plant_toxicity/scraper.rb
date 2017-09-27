@@ -9,14 +9,19 @@ class PlantToxicity::Scraper
   end
 
   def get_list(letter)
-    # get letter base url
-    # search each page of results for that letter
-    # create Plant object for each result, add to array (either empty array -> each << or collect)
-    #[1,2,3].collect do |i|
-    #  PlantToxicity::Plant.new("plant #{i}", "url #{i}")
-    #end
     letter_details = @doc.search("div.view-content span.views-summary a").detect {|letters| letters.text == letter.upcase}
-    letter_link = URL_BASE + letter_details.attribute("href").value
+    first_page = URL_BASE + letter_details.attribute("href").value
+    other_pages = Nokogiri::HTML(open(first_page)).search("li.pager-item").collect {|page| URL_BASE + page.search("a").attribute("href").value}
+    plants = []
+    Nokogiri::HTML(open(first_page)).search("div.views-field-title a").each do |plant|
+      plants << PlantToxicity::Plant.new(plant.text, URL_BASE + plant.attribute("href").value)
+    end
+    other_pages.each do |page|
+      Nokogiri::HTML(open(page)).search("div.views-field-title a").each do |plant|
+        plants << PlantToxicity::Plant.new(plant.text, URL_BASE + plant.attribute("href").value)
+      end
+    end
+    plants
   end
 
   def get_plant_details(plant)
