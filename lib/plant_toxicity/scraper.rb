@@ -25,30 +25,23 @@ class PlantToxicity::Scraper
   end
 
   def get_plant_details(plant)
-    details = Nokogiri::HTML(open(plant.url)).search("div.pane-entity-field div.field-items")
-    details.each do |field|
+    Nokogiri::HTML(open(plant.url)).search("div.pane-entity-field div.field-items").each do |field|
       if field.search("span.label-inline-format-label").text == "Scientific Name:"
-        plant.scientific_name = field.search("span.values").text
+        plant.scientific_name = field.search("span.values").text.strip
       end
       if field.search("span.label-inline-format-label").text == "Additional Common Names:"
-        plant.other_names = field.search("span.values").text
+        plant.other_names = field.search("span.values").text.strip
       end
       if field.search("span.label-inline-format-label").text == "Toxicity:"
-        plant.toxicity = field.search("span.values").text
+        plant.toxicity = field.search("span.values").text.strip
       end
       if field.search("span.label-inline-format-label").text == "Non-Toxicity:"
-        plant.non_toxicity = field.search("span.values").text
+        plant.non_toxicity = field.search("span.values").text.strip
       end
       if field.search("span.label-inline-format-label").text == "Clinical Signs:"
-        plant.clinical_signs = field.search("span.values").text
+        plant.clinical_signs = field.search("span.values").text.strip
       end
-
     end
-    #plant.scientific_name = "a scientific name"
-    #plant.other_names = "some other names"
-    #plant.toxicity = "toxic to some animals"
-    #plant.non_toxicity = "non-toxic to some animals"
-    #plant.clinical_symptoms = "some clinical symptoms"
   end
 
 end

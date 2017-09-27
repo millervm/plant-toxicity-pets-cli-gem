@@ -2,8 +2,10 @@ class PlantToxicity::CLI
 
   def call
     puts "Welcome to the Plant Toxicity tool!"
-    puts "The plants are listed by letter, based on the first letter in each plant's name."
+    puts "-----------------------------------"
+    puts "The plants are listed alphabetically by letter, based on the first letter in each plant's name."
     list_plants_by_letter
+    puts "-----------------------------------"
     puts "Thank you for using the tool! Goodbye."
     exit
   end

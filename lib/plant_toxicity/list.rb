@@ -6,25 +6,20 @@ class PlantToxicity::List
 
   def initialize(letter)
     @letter = letter.upcase
-    # use scraper method to get plants details (with @letter as argument, used to find selector/url)
-    #@plants = SCRAPER_OBJECT.get_list(@letter)
+    # refractor to not use instance variable for scraper?
     @scraper = PlantToxicity::Scraper.new
     @plants = @scraper.get_list(@letter)
-    #[1,2,3].each do |i|
-      #@plants << PlantToxicity::Plant.new("plant #{i}", "url #{i}")
-    #end
   end
 
   def list_plants
-    # for each plant in the @plants array, list #. plant name
     puts "These are the plants that begin with the letter '#{@letter}':"
     @plants.each.with_index(1) do |plant, i|
       puts "#{i}. #{plant.name}"
     end
+    puts "-----------------------------------"
     puts "Would you like to see more details about a plant in this list? (Y/N)"
     input = nil
     until input == "n"
-      # puts "Would you like to see more details about a plant in this list? (Y/N)"
       input = gets.strip.downcase
       if input == "y"
         plant_details
