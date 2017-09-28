@@ -1,5 +1,7 @@
 class PlantToxicity::CLI
 
+  attr_reader :scraper
+
   def call
     puts "Welcome to the Plant Toxicity tool!"
     puts "-----------------------------------"

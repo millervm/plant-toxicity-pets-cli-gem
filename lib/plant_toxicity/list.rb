@@ -1,12 +1,10 @@
 class PlantToxicity::List
 
-  attr_accessor :letter, :plants, :scraper
-
-  #SCRAPER_OBJECT = PlantToxicity::Scraper.new
+  attr_accessor :letter, :plants
+  attr_reader :scraper
 
   def initialize(letter)
     @letter = letter.upcase
-    # refractor to not use instance variable for scraper?
     @scraper = PlantToxicity::Scraper.new
     @plants = @scraper.get_list(@letter)
   end
@@ -33,7 +31,7 @@ class PlantToxicity::List
       end
     else
       puts "-----------------------------------"
-      puts "There are no plants that begin with the letter '#{letter}'."
+      puts "There are no plants that begin with the letter '#{@letter}'."
       puts "-----------------------------------"
     end
   end
