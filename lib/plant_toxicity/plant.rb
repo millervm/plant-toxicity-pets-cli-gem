@@ -12,20 +12,23 @@ class PlantToxicity::Plant
     puts "-" * header.length
     puts header
     puts "-" * header.length
-    if @other_names != nil && @other_names != ""
-      puts "Other Names:  #{@other_names}" + "\n\n"
-    end
-    if @scientific_name != nil && @scientific_name != ""
-      puts "Scientific Name:  #{@scientific_name}" + "\n\n"
-    end
-    if @toxicity != nil && @toxicity != ""
-      puts "Toxicity:  #{@toxicity}" + "\n\n"
-    end
-    if @non_toxicity != nil && @non_toxicity != ""
-      puts "Non-Toxicity:  #{@non_toxicity}" + "\n\n"
-    end
-    if @clinical_signs != nil && @clinical_signs != ""
-      puts "Clinical Signs:  #{@clinical_signs}"
+    self.instance_variables.each do |var|
+      if var != nil && var != "" && var != :@name && var != :@url
+        if var == :@other_names
+          puts "Other Names:  #{self.instance_variable_get(var)}"
+        elsif var == :@scientific_name
+          puts "Scientific Name:  #{self.instance_variable_get(var)}"
+        elsif var == :@toxicity
+          puts "Toxicity:  #{self.instance_variable_get(var)}"
+        elsif var == :@non_toxicity
+          puts "Non-Toxicity:  #{self.instance_variable_get(var)}"
+        elsif var == :@clinical_signs
+          puts "Clinical Signs:  #{self.instance_variable_get(var)}"
+        end
+        if var != self.instance_variables.last
+          puts "\n"
+        end
+      end
     end
     puts "-" * header.length
   end
