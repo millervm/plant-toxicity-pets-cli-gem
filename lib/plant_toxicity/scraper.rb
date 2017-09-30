@@ -8,20 +8,22 @@ class PlantToxicity::Scraper
     @doc = Nokogiri::HTML(open(URL_BASE + "/pet-care/animal-poison-control/toxic-and-non-toxic-plants"))
   end
 
-  def get_list(list)
-    letter_details = @doc.search("div.view-content span.views-summary a").detect {|letters| letters.text == list.letter.upcase}
+  def get_list(letter)
+    plants = []
+    letter_details = @doc.search("div.view-content span.views-summary a").detect {|letters| letters.text == letter.upcase}
     if letter_details != nil
       first_page = URL_BASE + letter_details.attribute("href").value
       other_pages = Nokogiri::HTML(open(first_page)).search("li.pager-item").collect {|page| URL_BASE + page.search("a").attribute("href").value}
       Nokogiri::HTML(open(first_page)).search("div.views-field-title a").each do |plant|
-        list.plants << PlantToxicity::Plant.new(plant.text, URL_BASE + plant.attribute("href").value)
+        plants << PlantToxicity::Plant.new(plant.text, URL_BASE + plant.attribute("href").value)
       end
       other_pages.each do |page|
         Nokogiri::HTML(open(page)).search("div.views-field-title a").each do |plant|
-          list.plants << PlantToxicity::Plant.new(plant.text, URL_BASE + plant.attribute("href").value)
+          plants << PlantToxicity::Plant.new(plant.text, URL_BASE + plant.attribute("href").value)
         end
       end
     end
+    plants
   end
 
   def get_plant_details(plant)
