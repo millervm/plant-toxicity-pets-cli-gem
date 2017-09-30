@@ -1,10 +1,6 @@
 # PlantToxicity
 
-----------Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/plant_toxicity`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-----------TODO: Delete this and the text above, and describe your gem
-
-Welcome to the Plant Toxicity gem! It can be used to obtain and display information about many common plants from the ASPCA website. The tool can provide a list plants for each letter of the alphabet, based on the first letter in the plant's name, as well as details about each plant and its toxicity to pets. It will indicate whether a plant is toxic to dogs, cats, and/or horses, and, if it is toxic, it will provide the clinical signs of poisoning.
+This Ruby Gem includes a CLI that can provide details about common plants, including their toxicity to pets (dogs, cats, and horses). Based on information from the ASPCA website, the user can obtain a list of plants for any letter of the alphabet (A-Z), and then additional details about specific plants in the list can be requested. These details may include, as available: other common names, scientific name, toxicity, non-toxicity, and clinical signs of poisoning.
 
 ## Installation
 
@@ -24,9 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
----------TODO: Write usage instructions here
-
-The gem will use a CLI to obtain user input about which details to display, and it will scrape the ASPCA website for the relevant information. When prompted, it will create a List object for the specified letter (A to Z) which contains the plants that correspond to that letter. Each Plant object will include the plant's name and the url where additional details can be found, and the user can request additional details about a specific plant. When further information is requested, the gem will obtain the following for that plant, if available and applicable: scientific name, other common names, toxicity, non-toxicity, and clinical signs.
+After installation, type plant-toxicity and then follow the prompts.
 
 ## Development
 

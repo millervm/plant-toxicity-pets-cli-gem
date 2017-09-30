@@ -1,17 +1,18 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+#lib = File.expand_path('../lib', __FILE__)
+#$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'plant_toxicity/version'
+require './lib/plant_toxicity'
 
 Gem::Specification.new do |spec|
   spec.name          = "plant_toxicity"
   spec.version       = PlantToxicity::VERSION
   spec.authors       = ["'Veronica Miller'"]
   spec.email         = ["'vmcmiller@gmail.com'"]
-
-  spec.summary       = %q{todo: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{todo: Write a longer description or delete this line.}
-  spec.homepage      = "todo: Put your gem's website or public repo URL here."
+  # spec.files            = ["lib/plant_toxicity.rb", "lib/plant_toxicity/cli.rb", "lib/plant_toxicity/scraper.rb", "lib/plant_toxicity/list.rb", "lib/plant_toxicity/plant.rb"]
+  spec.summary       = "Provides details about common plants and their toxicity to pets."
+  spec.description   = "As prompted by the user, it can list all plants starting with a given letter of the alphabet as well as provide further details about any plant listed."
+  spec.homepage      = "http://rubygems.org/gems/plant-toxicity"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
