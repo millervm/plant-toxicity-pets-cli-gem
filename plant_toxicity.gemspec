@@ -1,8 +1,5 @@
 # coding: utf-8
-#lib = File.expand_path('../lib', __FILE__)
-#$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'plant_toxicity/version'
-require './lib/plant_toxicity'
+require_relative 'lib/plant_toxicity'
 
 Gem::Specification.new do |spec|
   spec.name          = "plant_toxicity"

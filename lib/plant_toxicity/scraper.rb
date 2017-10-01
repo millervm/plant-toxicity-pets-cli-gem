@@ -12,12 +12,23 @@ class PlantToxicity::Scraper
     plants = []
     letter_details = @doc.search("div.view-content span.views-summary a").detect {|letters| letters.text == letter.upcase}
     if letter_details != nil
-      first_page = URL_BASE + letter_details.attribute("href").value
-      other_pages = Nokogiri::HTML(open(first_page)).search("li.pager-item").collect {|page| URL_BASE + page.search("a").attribute("href").value}
-      Nokogiri::HTML(open(first_page)).search("div.views-field-title a").each do |plant|
-        plants << PlantToxicity::Plant.new(plant.text, URL_BASE + plant.attribute("href").value)
+      pages = []
+      # first_page = URL_BASE + letter_details.attribute("href").value
+      pages << URL_BASE + letter_details.attribute("href").value
+      # other_pages = Nokogiri::HTML(open(first_page)).search("li.pager-item").collect {|page| URL_BASE + page.search("a").attribute("href").value}
+      Nokogiri::HTML(open(pages.first)).search("li.pager-item").each {|page| pages << URL_BASE + page.search("a").attribute("href").value}
+      # if !other_pages.empty?
+      if pages.length > 1
+        next_page = Nokogiri::HTML(open(pages.last)).search("ul.pager li").detect {|link| link.attribute("class").value == "pager-next"}
+        while next_page
+          pages << URL_BASE + next_page.search("a").attribute("href").value
+          next_page = Nokogiri::HTML(open(pages.last)).search("ul.pager li").detect {|link| link.attribute("class").value == "pager-next"}
+        end
       end
-      other_pages.each do |page|
+      #Nokogiri::HTML(open(first_page)).search("div.views-field-title a").each do |plant|
+      #  plants << PlantToxicity::Plant.new(plant.text, URL_BASE + plant.attribute("href").value)
+      #end
+      pages.each do |page|
         Nokogiri::HTML(open(page)).search("div.views-field-title a").each do |plant|
           plants << PlantToxicity::Plant.new(plant.text, URL_BASE + plant.attribute("href").value)
         end
