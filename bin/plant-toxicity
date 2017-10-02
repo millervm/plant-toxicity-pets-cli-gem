@@ -2,6 +2,5 @@
 
 require './lib/plant_toxicity'
 require "bundler/setup"
-# require "plant_toxicity"
 
 PlantToxicity::CLI.new.call

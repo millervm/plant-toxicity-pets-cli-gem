@@ -6,7 +6,6 @@ Gem::Specification.new do |spec|
   spec.version       = PlantToxicity::VERSION
   spec.authors       = ["'Veronica Miller'"]
   spec.email         = ["'vmcmiller@gmail.com'"]
-  # spec.files            = ["lib/plant_toxicity.rb", "lib/plant_toxicity/cli.rb", "lib/plant_toxicity/scraper.rb", "lib/plant_toxicity/list.rb", "lib/plant_toxicity/plant.rb"]
   spec.summary       = "Provides details about common plants and their toxicity to pets."
   spec.description   = "As prompted by the user, it can list all plants starting with a given letter of the alphabet as well as provide further details about any plant listed."
   spec.homepage      = "http://rubygems.org/gems/plant-toxicity"

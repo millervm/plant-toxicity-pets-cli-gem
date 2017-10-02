@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-After installation, type plant-toxicity and then follow the prompts.
+After installation, type 'plant-toxicity' and then follow the prompts.
 
 ## Development
 

@@ -1,8 +1,9 @@
 class PlantToxicity::CLI
 
   def call
-    puts "Welcome to the Plant Toxicity tool!"
+    puts "Welcome to the Plant Toxicity to Pets tool!"
     puts "-----------------------------------"
+    puts "It can tell you whether various common plants are toxic to dogs, cats, or horses."
     list_plants_by_letter
     puts "-----------------------------------"
     puts "Thank you for using the tool! Goodbye."
