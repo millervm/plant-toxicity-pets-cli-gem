@@ -2,10 +2,10 @@ class PlantToxicity::CLI
 
   def call
     puts "Welcome to the Plant Toxicity to Pets tool!"
-    puts "-----------------------------------"
-    puts "It can tell you whether various common plants are toxic to dogs, cats, or horses."
+    puts "-------------------------------------------"
+    puts "It can tell you whether various common plants are toxic to dogs, cats, and horses."
     list_plants_by_letter
-    puts "-----------------------------------"
+    puts "-------------------------------------------"
     puts "Thank you for using the tool! Goodbye."
     exit
   end
@@ -37,7 +37,7 @@ class PlantToxicity::CLI
       list.plants.each.with_index(1) do |plant, i|
         puts "#{i}. #{plant.name}"
       end
-      puts "-----------------------------------"
+      puts "-------------------------------------------"
       puts "Would you like to see more details about a plant in this list? (Y/N)"
       input = nil
       until input == "n"
@@ -52,9 +52,9 @@ class PlantToxicity::CLI
         end
       end
     else
-      puts "-----------------------------------"
+      puts "-------------------------------------------"
       puts "There are no plants that begin with the letter '#{list.letter}'."
-      puts "-----------------------------------"
+      puts "-------------------------------------------"
     end
   end
 
