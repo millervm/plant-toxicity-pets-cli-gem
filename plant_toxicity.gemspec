@@ -13,7 +13,6 @@ Gem::Specification.new do |spec|
 
   spec.files         = ["lib/plant_toxicity/cli.rb", "lib/plant_toxicity/list.rb", "lib/plant_toxicity/plant.rb", "lib/plant_toxicity/scraper.rb", "lib/plant_toxicity.rb", "bin/plant-toxicity", "README.md", "LICENSE.txt"]
 
-  spec.bindir        = "exe"
   spec.executables   = ["plant-toxicity"]
   spec.require_paths = ["lib"]
 
