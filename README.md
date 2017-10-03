@@ -1,6 +1,6 @@
 # PlantToxicity
 
-This Ruby Gem includes a CLI that can provide details about common plants, including their toxicity to pets (dogs, cats, and horses). Based on information from the ASPCA website, the user can obtain a list of plants for any letter of the alphabet (A-Z), and then additional details about specific plants in the list can be requested. These details may include, as available: other common names, scientific name, toxicity, non-toxicity, and clinical signs of poisoning.
+This Ruby Gem contains a CLI that can provide details about common plants, including their toxicity to certain pets (dogs, cats, and horses). Based on information from the ASPCA website, the user can obtain a list of plants for any letter of the alphabet (A-Z), and then additional details about specific plants in the list can be requested. These details may include, as available: other common names, scientific name, toxicity, non-toxicity, and clinical signs of poisoning.
 
 ## Installation
 

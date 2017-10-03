@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require './lib/plant_toxicity'
+require "./lib/plant_toxicity"
 require "bundler/setup"
 
 PlantToxicity::CLI.new.call
