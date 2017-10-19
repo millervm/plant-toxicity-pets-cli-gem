@@ -7,8 +7,13 @@ class PlantToxicity::List
 
   def initialize(letter)
     @letter = letter.upcase
-    @plants = PlantToxicity::Scraper.get_list(@letter)
+    @plants = []
+    PlantToxicity::Scraper.get_list(@letter, self)
     @@all << self
+  end
+
+  def add_plant(plant)
+    self.plants << plant
   end
 
   def self.all

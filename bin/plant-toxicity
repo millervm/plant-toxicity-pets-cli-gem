@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
-require "./lib/plant_toxicity"
+#require "/home/vmcmiller-72282/code/plant_toxicity/lib/plant_toxicity"
+require_relative "../lib/plant_toxicity"
 require "bundler/setup"
 
 PlantToxicity::CLI.new.call

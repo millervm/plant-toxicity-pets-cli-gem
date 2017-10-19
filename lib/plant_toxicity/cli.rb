@@ -21,6 +21,7 @@ class PlantToxicity::CLI
         if !list
           list = PlantToxicity::List.new(input.upcase)
         end
+
         display_list(list)
         puts "Enter a letter from A to Z to see another list of plants, or enter 'exit' to end the session."
       elsif input == "exit"
